@@ -1,6 +1,6 @@
-import "/public/css/global.css";
-import "/public/css/tippy.css";
-import "/public/css/customColors.css";
+import "../public/css/global.css";
+import "../public/css/tippy.css";
+import "../public/css/customColors.css";
 import "tailwindcss/tailwind.css";
 import NProgress from "nprogress";
 import Router, { useRouter } from "next/router";
