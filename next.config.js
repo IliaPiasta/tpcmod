@@ -1,13 +1,21 @@
-const withPWA = require("next-pwa");
-
-module.exports = withPWA({
+const withPWA = require("next-pwa")({
+    dest: "public",
+    register: true,
+    skipWaiting: true,
+    disable: process.env.NODE_ENV === "development",
+  });
+  
+  const nextConfig = {
     images: {
-        domains: [ "cdn.discordapp.com" ]
+      domains: ["cdn.discordapp.com"],
+      unoptimized: true, // Required for next export
     },
-    pwa: {
-        dest: "public",
-        register: true,
-        skipWaiting: true,
-        disable: process.env.NODE_ENV == "development"
-    }
-});
+    trailingSlash: true, // Ensures proper GitHub Pages routing
+    output: "standalone", // Updated for static deployment like GitHub Pages
+    basePath: "/tpcmod", // Указываем путь к репозиторию
+    assetPrefix: "/tpcmod", // Для корректной загрузки статики
+    
+  };
+  
+  module.exports = withPWA(nextConfig);
+  
